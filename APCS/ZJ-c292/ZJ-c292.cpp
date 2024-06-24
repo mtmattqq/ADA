@@ -1,4 +1,3 @@
-// b965
 #include <iostream>
 #include <utility>
 #include <vector>
@@ -7,10 +6,7 @@ using vec = std::vector<int>;
 using mat = std::vector<vec>;
 
 enum DIR {
-    LEFT,
-    UP,
-    RIGHT,
-    DOWN
+    LEFT, UP, RIGHT, DOWN
 };
 
 class Position {

@@ -18,7 +18,7 @@ public:
     void left_rotate();
     void flip();
     void operator=(Matrix &&other);
-    const int& operator[](Position pos);
+    int& operator[](Position pos);
     bool contain(const Position &pos);
     Position size() { return Position(row, col);}
 private:

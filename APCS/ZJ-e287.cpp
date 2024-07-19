@@ -44,7 +44,7 @@ public:
         : row(_row), col(_col), values(_row, vec(_col)) {}
     void input(std::istream &in);
     const int& operator[](Position pos);
-    void operator=(Matrix &&other);
+    void operator=(Matrix && other);
     bool contain(const Position &pos);
     Position size() { return Position(row, col);}
 protected:
@@ -109,7 +109,7 @@ int Map::find_sum() {
     int sum{0};
     Position current_pos{find_min_pos()};
     while (contain(current_pos)) {
-        sum += operator[](current_pos);
+        sum += (*this)[current_pos];
         visited[current_pos.get_row()][current_pos.get_col()] = true;
         int min = INF;
         Position try_pos{current_pos}, next_pos{NOT_FOUND};
@@ -119,8 +119,8 @@ int Map::find_sum() {
                 try_pos = current_pos;
                 continue;
             }
-            if (!visited[try_pos.get_row()][try_pos.get_col()] && operator[](try_pos) < min) {
-                min = operator[](try_pos);
+            if (!visited[try_pos.get_row()][try_pos.get_col()] && (*this)[try_pos] < min) {
+                min = (*this)[try_pos];
                 next_pos = try_pos;
             }
         }

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sys/types.h>
 #include <utility>
 #include <vector>
 
@@ -13,12 +12,12 @@ public:
         : row(_row), col(_col) {}
     const int& get_row() const { return row;}
     const int& get_col() const { return col;}
-    Position& operator+=(const Position &other);
+    Position& add_equal(const Position &other);
 private:
     int row, col;
 };
 
-inline Position& Position::operator+=(const Position &other) {
+inline Position& Position::add_equal(const Position &other) {
     row += other.row;
     col += other.col;
     return *this;
@@ -127,7 +126,7 @@ class Boss {
 public:
     Boss(Position _pos_now, Position _move_speed)
         : pos_now(_pos_now), move_speed(_move_speed), alive(true) {}
-    void move() { pos_now += move_speed;}
+    void move() { pos_now.add_equal(move_speed);}
     bool is_alive() { return alive;}
     void disappear() { alive = false;}
     Position get_pos() { return pos_now;}

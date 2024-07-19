@@ -42,7 +42,7 @@ void Matrix::flip() {
     }
 }
 
-const int& Matrix::operator[](Position pos) {
+int& Matrix::operator[](Position pos) {
     return values[pos.get_row()][pos.get_col()];
 }
 

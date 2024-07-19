@@ -114,7 +114,8 @@ private:
 
 void Board::push_odd(Position start, Position end, int dir) {
     for (Position cur{start}; cur + MOVEMENT[dir] != end; cur += MOVEMENT[dir]) {
-        if ((*this)[cur] & 1) {
+        // 1101010101
+        if (values[cur.get_row()][cur.get_col()] & 1) {
             moves.emplace_back(cur, cur + MOVEMENT[dir]);
             (*this)[cur]--;
             (*this)[cur + MOVEMENT[dir]]++;
@@ -129,7 +130,7 @@ int main(void) {
     Board board(H, W);
     std::cin >> board;
     for (int i{0}; i < board.size().get_row(); ++i) {
-        board.push_odd(Position(i, 0), Position(i, board.size().get_col()), RIGHT);
+        board.push_odd(Position(i, 0), Position(i, W - 1), RIGHT);
     }
     board.push_odd(Position(0, W - 1), Position(H, W - 1), DOWN);
     std::cout << board.get_push_count() << "\n";

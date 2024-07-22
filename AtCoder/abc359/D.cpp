@@ -32,10 +32,7 @@ bool palindrome(const std::string &s, int left, int right) {
 }
 
 int64_t count_not_palindrom(const std::string &s, mat &dp, int n, int k, int now, std::string &selected_substr) {
-    // std::cout << selected_substr << "\n";
-    // std::cout << "now: " << now << " k: " << k << "\n";
     if (now >= k && palindrome(selected_substr, now - k, now)) {
-        // std::cout << "end with pal\n";
         return 0;
     }
     if (now == n) {
@@ -58,16 +55,7 @@ int64_t count_not_palindrom(const std::string &s, mat &dp, int n, int k, int now
     return dp[to_index(selected_substr.substr(std::max(0, now - k)))][now] = ret;
 }
 
-void test_palindrom() {
-    assert(palindrome("abba", 0, 4) == true);
-    assert(palindrome("aabb", 0, 4) == false);
-    assert(palindrome("abab", 0, 4) == false);
-    assert(palindrome("abaaab", 2, 6) == false);
-    assert(palindrome("abaaaba", 3, 7) == false);
-}
-
 int main(void) {
-    test_palindrom();
     int n, k;
     std::cin >> n >> k;
     std::string s;
